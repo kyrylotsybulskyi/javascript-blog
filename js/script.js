@@ -8,18 +8,19 @@ function titleClickHandler(){
   /* [DONE] remove class 'active' from all article links  */
 
   const activeLinks = document.querySelectorAll('.titles a.active');
-
+  
   for(let activeLink of activeLinks){
     activeLink.classList.remove('active');
   }
   /* [DONE] add class 'active' to the clicked link */
-    
+ 
   console.log('clickedElement:', clickedElement);    
   clickedElement.classList.add('active');
 
   /* [DONE] remove class 'active' from all articles */
 
   const activeArticles = document.querySelectorAll('.posts .active');
+  
 
   for(let activeArticle of activeArticles){
     activeArticle.classList.remove('active');
@@ -47,7 +48,7 @@ const optArticleSelector ='.post',
   optArticleTagsSelector = '.post-tags .list';
 
 function generateTitleLinks(customSelector = ''){
-
+  console.log('1customSelector = ', customSelector);
   /* remove contents of titleList */
 
   console.log('optTitleListSelector = ', optTitleListSelector);
@@ -60,6 +61,7 @@ function generateTitleLinks(customSelector = ''){
   let html = '';
 
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  console.log('customSelector = ', customSelector);
   console.log('articles = ', articles);
   for(let article of articles){
     article.querySelector(optArticleSelector);
@@ -102,6 +104,7 @@ function generateTitleLinks(customSelector = ''){
 }
 
 generateTitleLinks();
+
 
 function generateTags(){
   /* find all articles */
@@ -156,12 +159,14 @@ function generateTags(){
     /* insert HTML of all the links into the tags wrapper */
 
     tagsList.innerHTML = html;
-    const links = article.querySelectorAll(optArticleTagsSelector);
+    //const links = article.querySelectorAll(optArticleTagsSelector);
     console.log('tagsList = ', tagsList);
+    
     
     
   /* END LOOP: for every article: */
   }
+  //console.log('links = ', links);
 }
 
 generateTags();
@@ -169,7 +174,7 @@ generateTags();
 function tagClickHandler(event){
   /* prevent default action for this event */
 
-  event.preventDefault(event);
+  event.preventDefault();
 
   /* make new constant named "clickedElement" and give it the value of "this" */
 
@@ -239,7 +244,7 @@ function addClickListenersToTags(){
 
     /* add tagClickHandler as event listener for that link */
 
-    tagLink.addEventListener('click', tagClickHandler());
+    tagLink.addEventListener('click', tagClickHandler);
 
   /* END LOOP: for each link */
 
