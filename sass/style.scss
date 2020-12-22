@@ -118,3 +118,35 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
+
+.tag-size-1 {
+  color: green;
+  font-size: 15px;
+}
+
+.tag-size-2 {
+  color: rgb(7, 42, 56);
+  font-size: 20px;
+}
+
+.tag-size-3 {
+  color: rgb(12, 48, 126);
+  font-size: 30px;
+}
+
+.tag-size-4 {
+  color: rgb(73, 139, 224);
+  font-size: 40px;
+}
+
+.tag-size-5 {
+  color: rgb(156, 42, 201);
+  font-size: 50px;
+}

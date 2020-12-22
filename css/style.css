@@ -107,4 +107,40 @@ body {
 .post-tags p {
   margin: 0 10px 0 0;
 }
+
+.tags {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+}
+
+.tag-size-1 {
+  color: green;
+  font-size: 15px;
+}
+
+.tag-size-2 {
+  color: #072a38;
+  font-size: 20px;
+}
+
+.tag-size-3 {
+  color: #0c307e;
+  font-size: 30px;
+}
+
+.tag-size-4 {
+  color: #498be0;
+  font-size: 40px;
+}
+
+.tag-size-5 {
+  color: #9c2ac9;
+  font-size: 50px;
+}
 /*# sourceMappingURL=style.css.map */
