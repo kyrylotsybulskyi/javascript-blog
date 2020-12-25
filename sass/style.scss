@@ -112,6 +112,8 @@ body {
   font-style: italic;
 }
 
+/* Post-tags  */
+
 .post-tags {
   display: flex;
   p {
@@ -127,26 +129,26 @@ body {
 }
 
 .tag-size-1 {
-  color: green;
-  font-size: 15px;
-}
-
-.tag-size-2 {
-  color: rgb(7, 42, 56);
+  color: rgb(4, 197, 197);
   font-size: 20px;
 }
 
+.tag-size-2 {
+  color: rgb(19, 211, 2);
+  font-size: 25px;
+}
+
 .tag-size-3 {
-  color: rgb(12, 48, 126);
+  color: rgb(6, 10, 243);
   font-size: 30px;
 }
 
 .tag-size-4 {
-  color: rgb(73, 139, 224);
-  font-size: 40px;
+  color: rgb(221, 62, 221);
+  font-size: 35px;
 }
 
 .tag-size-5 {
-  color: rgb(156, 42, 201);
-  font-size: 50px;
+  color: rgb(255, 0, 0);
+  font-size: 40px;
 }

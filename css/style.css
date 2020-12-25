@@ -99,6 +99,7 @@ body {
   font-style: italic;
 }
 
+/* Post-tags  */
 .post-tags {
   display: -ms-flexbox;
   display: flex;
@@ -120,27 +121,27 @@ body {
 }
 
 .tag-size-1 {
-  color: green;
-  font-size: 15px;
-}
-
-.tag-size-2 {
-  color: #072a38;
+  color: #04c5c5;
   font-size: 20px;
 }
 
+.tag-size-2 {
+  color: #13d302;
+  font-size: 25px;
+}
+
 .tag-size-3 {
-  color: #0c307e;
+  color: #060af3;
   font-size: 30px;
 }
 
 .tag-size-4 {
-  color: #498be0;
-  font-size: 40px;
+  color: #dd3edd;
+  font-size: 35px;
 }
 
 .tag-size-5 {
-  color: #9c2ac9;
-  font-size: 50px;
+  color: red;
+  font-size: 40px;
 }
 /*# sourceMappingURL=style.css.map */

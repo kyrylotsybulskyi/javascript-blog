@@ -382,18 +382,19 @@ addClickListenersToAuthors();
 
 function calculateTagsParams(tags){
 
-  let max=0, min=99999, params = {min, max};
+  let max=0, min=99999, tagsParams = {min, max};
   
   for(let tag in tags){
 
     console.log(tag + ' is used ' + tags[tag] + ' times');
-    params.max = Math.max(tags[tag], params.max);
-    params.min = Math.min(tags[tag], params.max);
+    tagsParams.max = Math.max(tags[tag], tagsParams.max);
+    tagsParams.min = Math.min(tags[tag], tagsParams.max);
     console.log('tags: ', tags);
     
   }
+  console.log('tagsParams: ',tagsParams);
 
-  return params;
+  return tagsParams;
 
 }
 
@@ -403,9 +404,10 @@ function calculateTagClass(count, params){
   percentage = normalizedCount / normalizedMax,
   classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
   //count = classNumber;
+  console.log('params.max: ', params.max);
   console.log('count: ', count);
   console.log('normalizedCount: ', normalizedCount);
-  return '<a class="' + optCloudClassPrefix + count + '"';
+  return '<a class="' + optCloudClassPrefix + classNumber + '"';
   //console.log('linkHTML: ', linkHTML);
 }
 
@@ -508,10 +510,11 @@ function generateTags(){
 
     //tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
     
-    const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], optCloudClassPrefix) + ' href="#tag-' + tag +'">' + tag +'</a></li>';
+    const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + ' href="#tag-' + tag +'">' + tag +'</a></li>';
     allTagsHTML += tagLinkHTML;
     console.log('tagLinkHTML:', tagLinkHTML);
     console.log('allTags[tag]', allTags[tag]);
+    
 
   /* [NEW] END LOOP: for each tag in allTags: */
     
