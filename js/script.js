@@ -295,6 +295,8 @@ addClickListenersToTags();
 function generateAuthorsCloud() {
   /* find all articles */
 
+  let allAuthors = {};
+
   const articles = document.querySelectorAll(optArticleSelector);
   // console.log('articles = ', articles);
 
@@ -306,7 +308,7 @@ function generateAuthorsCloud() {
 
     /* find authors wrapper */
 
-    const authorList = article.querySelector(optArticleAuthorSelector);
+    const authorLink = article.querySelector(optArticleAuthorSelector);
     // console.log('authorList = ', authorList);
 
     /* make html variable with empty string */
@@ -316,32 +318,66 @@ function generateAuthorsCloud() {
     /* get authors from data-author attribute */
 
     const articleAuthor = article.getAttribute('data-author');
-    // console.log('articleAuthor: ', articleAuthor);
+    console.log('articleAuthor: ', articleAuthor);
 
     /* generate HTML of the link */
 
     const linkHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>';
 
-    //// console.log('linkHTML = ', linkHTML);
+    //console.log('linkHTML = ', linkHTML);
 
     /* add generated code to html variable */
 
-    html = html + linkHTML + ' ';
-    // console.log('html = ', html);
+    if (!allAuthors.hasOwnProperty(articleAuthor)) {
+    console.log('allAuthors = ', allAuthors);
+    
+    allAuthors[articleAuthor] = 1;
+    console.log('allAuthors[articleAuthor] = ', allAuthors[articleAuthor]);
+    html = html + linkHTML + '(' + allAuthors[articleAuthor] + ')' + ' ';
+    console.log('html = ', html);
+    } else {
+      html = html + '(' + allAuthors[articleAuthor] + ')' + ' ';
+      allAuthors[articleAuthor]++;
+    console.log('allAuthors[articleAuthor] = ', allAuthors[articleAuthor]);
+    
+    
+    console.log('html = ', html);
+    }
+    
 
     /* insert HTML of all the links into the author wrapper */
 
+    //for (let author in allAuthors) {
+
+      
+        
+      /* [NEW] add tag to allTags object */
+
+      
+
+      authorLink.innerHTML = html;
+      //console.log('authorLink = ', authorLink);
+  }
+  
+  
+  
+  
+    
+    // console.log('allTags: ', allTags);
 
 
-    authorList.innerHTML = html;
+
+    
     //const links = article.querySelectorAll(optArticleTagsSelector);
-    // console.log('authorList = ', authorList);
+     
 
     /* END LOOP: for every article: */
-  }
+  //}
   //// console.log('links = ', links);
-}
 
+
+
+}
 generateAuthorsCloud();
 
 function generateAuthorForArticle() {
@@ -542,5 +578,4 @@ function calculateAuthorsParams(authors) {
   // console.log('authorsParams: ',authorsParams);
 
   return authors[author];
-
 }
