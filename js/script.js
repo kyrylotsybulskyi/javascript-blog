@@ -294,8 +294,7 @@ addClickListenersToTags();
 
 function generateAuthorsCloud() {
   
-  let allAuthors
-  , = {};
+  let allAuthors = {};
 
   /* find all articles */
 
