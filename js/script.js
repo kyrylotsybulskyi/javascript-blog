@@ -1,7 +1,9 @@
 'use strict';
 
 const templates = {
-  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
 };
 
 const optArticleSelector = '.post',
@@ -140,7 +142,9 @@ function generateTags() {
 
       /* generate HTML of the link */
 
-      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      //const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      const linkHTMLData = {id: tag, title: tag};
+      const linkHTML = templates.tagLink(linkHTMLData);
        //console.log('linkHTML = ', linkHTML);
 
       /* add generated code to html variable */
@@ -315,7 +319,7 @@ function generateAuthorsCloud() {
     /* find authors wrapper */
 
     const authorsList = article.querySelector(optArticleAuthorSelector);
-     console.log('authorsList = ', authorsList);
+    // console.log('authorsList = ', authorsList);
 
     /* make html variable with empty string */
 
@@ -324,7 +328,7 @@ function generateAuthorsCloud() {
     /* get authors from data-author attribute */
 
     const articleAuthor = article.getAttribute('data-author');
-    console.log('articleAuthor: ', articleAuthor);
+    //console.log('articleAuthor: ', articleAuthor);
 
     /* generate HTML of the link */
 
@@ -339,7 +343,7 @@ function generateAuthorsCloud() {
     console.log('allAuthors[author]: ', allAuthors[author]);
     /* [NEW] check if this link is NOT already in allAuthors */
 
-    if (!allAuthors.hasOwnProrety(author)) {
+    if (!allAuthors.hasOwnProperty(author)) {
 
       /* [NEW] add tag to allTags object */
 
@@ -347,16 +351,18 @@ function generateAuthorsCloud() {
 
       } else {
 
-        alllAuthors[articleAuthor]++;
+        allAuthors[articleAuthor]++;
       }
     /* insert HTML of all the links into the author wrapper */
 
-    authorList.innerHTML = html;
-    console.log('authorList: ', authorList);
+    
 
     /* [NEW] find list of authors in right column */
 
     const authorList = document.querySelector('.authors');
+
+    //authorList.innerHTML = html;
+    console.log('authorList: ', authorList);
     
      /* [NEW] create variable for all links HTML code */
 
@@ -381,7 +387,7 @@ function generateAuthorsCloud() {
       //console.log('authorLink = ', authorLink);
   }
   
-  generateAuthorsCloud();
+  //generateAuthorsCloud();
   
   
   
@@ -438,7 +444,6 @@ function generateAuthorForArticle() {
 
 
     const linkHTML = '<li>by <a href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>';
-
     // console.log('linkHTML = ', linkHTML);
     // console.log('allAuthors = ', allAuthors);
 
