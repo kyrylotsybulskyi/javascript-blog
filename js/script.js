@@ -79,6 +79,7 @@ function generateTitleLinks(customSelector = '') {
 
     const linkHTMLData = {id: articleId, title: articleTitle};
     const linkHTML = templates.articleLink(linkHTMLData);
+    console.log('linkHTML = ', linkHTML);
 
     /* insert link into titleList */
 
@@ -142,10 +143,10 @@ function generateTags() {
 
       /* generate HTML of the link */
 
-      //const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-      const linkHTMLData = {id: tag, title: tag};
-      const linkHTML = templates.tagLink(linkHTMLData);
-       //console.log('linkHTML = ', linkHTML);
+      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      //const linkHTMLData = {id: tag, title: tag};
+      //const linkHTML = templates.tagLink(linkHTMLData);
+       console.log('linkHTML = ', linkHTML);
 
       /* add generated code to html variable */
 
@@ -443,7 +444,11 @@ function generateAuthorForArticle() {
     /* generate HTML of the link */
 
 
-    const linkHTML = '<li>by <a href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>';
+    //const linkHTML = '<li>by <a href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>';
+
+    let author = articleAuthor;
+    const linkHTMLData = {id: author, title: author};
+    const linkHTML = templates.authorLink(linkHTMLData);
     // console.log('linkHTML = ', linkHTML);
     // console.log('allAuthors = ', allAuthors);
 
@@ -453,7 +458,7 @@ function generateAuthorForArticle() {
     // console.log('html = ', html);
 
     /* [NEW] check if this link is NOT already in allAuthors */
-    let author = articleAuthor;
+    
 
     if (!allAuthors.hasOwnProperty(author)) {
       // console.log('author = ', author);
