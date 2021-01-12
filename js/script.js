@@ -3,7 +3,8 @@
 const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
   tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
-  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
 };
 
 const optArticleSelector = '.post',
@@ -79,7 +80,7 @@ function generateTitleLinks(customSelector = '') {
 
     const linkHTMLData = {id: articleId, title: articleTitle};
     const linkHTML = templates.articleLink(linkHTMLData);
-    console.log('linkHTML = ', linkHTML);
+    //console.log('linkHTML = ', linkHTML);
 
     /* insert link into titleList */
 
@@ -146,7 +147,7 @@ function generateTags() {
       //const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
       const linkHTMLData = {id: tag, title: tag};
       const linkHTML = templates.tagLink(linkHTMLData);
-       console.log('linkHTML = ', linkHTML);
+       //console.log('linkHTML = ', linkHTML);
 
       /* add generated code to html variable */
 
@@ -189,7 +190,7 @@ function generateTags() {
 
   /* [NEW] create variable for all links HTML code */
 
-  let allTagsHTML = '';
+  const allTagsData = {tags: []};
 
   /* [NEW] START LOOP: for each tag in allTags: */
 
@@ -204,8 +205,12 @@ function generateTags() {
     //tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
 
     const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + ' href="#tag-' + tag + '">' + tag + '</a></li>';
-    allTagsHTML += tagLinkHTML;
-    //console.log('tagLinkHTML:', tagLinkHTML);
+    allTagsData.tags.push({
+      tag: tag,
+      count: allTags[tag],
+      className: calculateTagClass(allTags[tag], tagsParams)
+    });
+    console.log('tagLinkHTML:', tagLinkHTML);
     //console.log('allTags[tag]', allTags[tag]);
 
 
@@ -215,8 +220,8 @@ function generateTags() {
 
   /* [NEW] add html from allTagsHTML to tagLisst */
 
-  tagList.innerHTML = allTagsHTML;
-  //console.log('allTagsHTML: ',allTagsHTML);
+  tagList.innerHTML = templates.tagCloudLink(allTagsData);
+  console.log('allTagsData: ', allTagsData);
 }
 generateTags();
 
@@ -449,7 +454,7 @@ function generateAuthorForArticle() {
     let author = articleAuthor;
     const linkHTMLData = {id: author, title: author};
     const linkHTML = templates.authorLink(linkHTMLData);
-    console.log('linkHTML = ', linkHTML);
+    //console.log('linkHTML = ', linkHTML);
     // console.log('allAuthors = ', allAuthors);
 
     /* add generated code to html variable */
