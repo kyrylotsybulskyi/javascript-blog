@@ -201,11 +201,11 @@
         </script>
         <script id="template-tag-cloud-link" type="text/x-handlebars-template">
           {{#each tags}}
-          <li><a {{ className }} href ="#tag-{{ tag }}">{{ tag }} ({{count}})</a></li>
+          <li><a class="{{ className }}" href="#tag-{{ tag }}">{{ tag }} ({{count}})</a></li>
           {{/each}}
         </script>
         <script id="template-author-cloud-link" type="text/x-handlebars-template">
-          {{#each tags}}
+          {{#each authors}}
           <li><a href ="#author-{{ author }}">{{ author }} ({{count}})</a></li>
           {{/each}}
         </script>
